@@ -76,12 +76,27 @@ class Cursor
   end
 
   def handle_key(key)
-    puts "handling key"
+    #puts "handling key #{key}"
     case key 
     when :return || :space 
       @cursor_pos
-    when :left || :right || :up || :down 
-      puts "found l,r,u,d key"
+    when :left
+      #puts "found l key"
+      diff = MOVES[key]
+      update_pos(diff)
+      nil 
+    when :right
+      #puts "found r key"
+      diff = MOVES[key]
+      update_pos(diff)
+      nil 
+    when :up
+      #puts "found u key"
+      diff = MOVES[key]
+      update_pos(diff)
+      nil 
+    when :down
+      #puts "found d key"
       diff = MOVES[key]
       update_pos(diff)
       nil 
@@ -91,14 +106,14 @@ class Cursor
   end
 
   def update_pos(diff)
-    puts "went to update position"
+    #puts "went to update position"
     x, y = @cursor_pos
     x, y = x + diff[0], y + diff[1]
     if Board.valid_pos?([x, y])
-      puts "cursor_pos was #{@cursor_pos}"
+      #puts "cursor_pos was #{@cursor_pos}"
       @cursor_pos = [x, y] 
-      puts "updated cursor_pos #{@cursor_pos} to #{[x, y]}"
+      #puts "updated cursor_pos #{@cursor_pos} to #{[x, y]}"
     end
-    #return @cursor_pos
+    return @cursor_pos
   end
 end

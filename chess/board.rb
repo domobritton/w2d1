@@ -32,19 +32,23 @@ class Board
     self[start_pos] = nil
   end
   
-  def display
-    puts "-----------"
-    @grid.each do |row|
-      row.each do |piece|
-        if piece.nil?
-          print " ~nil~ "
-        else
-          print " #{piece.color} "
-        end
-      end
-      puts ""
-    end
-    puts "-----------"
-  end
+  def self.valid_pos?(pos)
+    pos.all? {|n| (0..7).include?(n)}
+  end 
+  
+  # def display
+  #   puts "-----------"
+  #   @grid.each do |row|
+  #     row.each do |piece|
+  #       if piece.nil?
+  #         print " ~nil~ "
+  #       else
+  #         print " #{piece.color} "
+  #       end
+  #     end
+  #     puts ""
+  #   end
+  #   puts "-----------"
+  # end
   
 end 

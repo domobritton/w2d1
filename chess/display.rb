@@ -14,12 +14,13 @@ class Display
     (0..7).each do |row_idx|
       (0..7).each do |col_idx|
         if [row_idx, col_idx] == @cursor_pos
-          print " 😄 ".colorize(:color => :white, :background => :light_blue)
+          print "()😄".colorize(:color => :white, :background => :light_blue)
         else 
+          pos = [row_idx, col_idx]
           color = :black if (row_idx + col_idx).even?
           color = :red if (row_idx + col_idx).odd?
-          print "   ".colorize(:color => :white, :background => color) if color == :black
-          print "   ".colorize(:color => :white, :background => color) if color == :red
+          print "#{@board[pos].symbol}".colorize(:color => :white, :background => color) if color == :black
+          print "#{@board[pos].symbol}".colorize(:color => :white, :background => color) if color == :red
 
         end
       end 
